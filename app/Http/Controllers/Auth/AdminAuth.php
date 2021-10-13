@@ -76,7 +76,17 @@ trait AdminAuth {
             $code = ClassGroup::where('name',$request['school'])->get();
             $cls = StudentClass::where('name',$request['class'])->get();
         //    dd(ClassGroup::where('name','Nursery')->take(1)->get());
-            $input['reg_no'] = $code[0]->code.(Student::where('id','>',1)->count()+1);
+            $count = (Student::where('id','>',1)->count()+1);
+            if($count<10){
+                    $input['reg_no']=$code[0]->code.'000/'.date("y").'/'.$count;
+            }elseif($count<100){
+                $input['reg_no']=$code[0]->code.'00/'.date("y").'/'.$count;
+            }elseif($count<1000){
+                $input['reg_no']=$code[0]->code.'0/'.date("y").'/'.$count;
+            }
+            else{
+                $input['reg_no']= $code[0]->code.'/'.date("y").'/'.$count;
+            }
             $input['username'] = $input['reg_no'];
             $input['class_type_id'] = $code[0]->group_id;
             $input['class_id'] = $cls[0]->id;

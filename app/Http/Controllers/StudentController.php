@@ -185,7 +185,7 @@ class StudentController extends Controller {
             $ext = explode('/',$arr1[1])[1];
         $name = time().'.'.$ext;
         \Image::make( $request->image)->save(public_path($dir).$name);
-         return  response()->json(['success'=>true,'url'=>env('APP_URL').$dir.$name],200); 
+         return  response()->json(['success'=>true,'url'=>public_path($dir).$name],200); 
         }        
         return  response()->json(['success'=>false,'msg'=>'Image not uploaded'],401); 
     }
