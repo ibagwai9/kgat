@@ -20,6 +20,7 @@ class CreateStudentTable extends Migration {
 			$table->string('other_name',60)->nullable();
 			$table->string('gender', 10);
 			$table->date('dob')->nullable();
+			$table->string('pob')->nullable();
 			$table->string('state',20)->nullable();
 			$table->string('lga',60)->nullable();
 			$table->string('parent_name',20)->nullable();

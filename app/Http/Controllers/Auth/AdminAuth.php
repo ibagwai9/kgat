@@ -75,7 +75,7 @@ trait AdminAuth {
             $input['userable_type'] =  'App\Student';
             $code = ClassGroup::where('name',$request['school'])->get();
             $cls = StudentClass::where('name',$request['class'])->get();
-           
+        //    dd(ClassGroup::where('name','Nursery')->take(1)->get());
             $input['reg_no'] = $code[0]->code.(Student::where('id','>',1)->count()+1);
             $input['username'] = $input['reg_no'];
             $input['class_type_id'] = $code[0]->group_id;

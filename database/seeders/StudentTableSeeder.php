@@ -19,7 +19,7 @@ class StudentTableSeeder extends Seeder {
                 'other_name' => $faker->name,
                 'gender'=> ($range>3 ? 'Male': 'Female' ),
                 'parent_id'=> $faker->numberBetween(1,10 ),
-                'reg_no' => 'ST'.rand(1, 9),
+                'reg_no' => 'ST'.$range,
                 'class_id' => $faker->numberBetween(1, 11),
                 'class_type_id' => $faker->numberBetween(1, 5),
                 'dob' => $faker->date(),
